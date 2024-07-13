@@ -144,9 +144,13 @@
         </div>
 
         @yield('scripts')
+        <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
         <script src="/js/bootstrap.bundle.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/chart.js@4.3.2/dist/chart.umd.js"></script>
         <script src="/js/dashboard.js"></script>
         <script src="/js/color-modes.js"></script>
+        {{-- BlocUI loading --}}
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.blockUI/2.70/jquery.blockUI.js"></script>
+        <script src="/js/projeto.js"></script>
     </body>
 </html>
