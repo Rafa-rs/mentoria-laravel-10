@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Produto;
 use Illuminate\Http\Request;
+use App\Http\Requests\FormRequestProduto;
+use App\Models\Componentes;
 
 class ProdutosController extends Controller
 {
@@ -27,5 +29,43 @@ class ProdutosController extends Controller
         $buscarRegistro = Produto::find($id);
         $buscarRegistro->delete();
         return response()->json(['success' => true]);
+    }
+
+    public function cadastrarProduto(FormRequestProduto $request)
+    {
+        if ($request->method() == "POST") {
+            //cria os dados
+            $data = $request->all();
+
+            $componentes = new Componentes();
+            $data['valor'] = $componentes->formatacaoMascaraDinheiroDecimal($data['valor']);
+
+            Produto::create($data);
+            return redirect()->route('produto.index');
+        }
+
+        return view('pages.produtos.create');
+    }
+
+    public function atualizarProduto(FormRequestProduto $request, $id)
+    {
+        if ($request->method() == "PUT") {
+
+            //atualiza os dados
+            $data = $request->all();
+
+            $componentes = new Componentes();
+            $data['valor'] = $componentes->formatacaoMascaraDinheiroDecimal($data['valor']);
+
+            $buscaRegistro = Produto::find($id);
+            $buscaRegistro->update($data);
+
+            return redirect()->route('produto.index');
+        }
+
+        //mostrar dados
+        $findProduto = Produto::where('id', '=', $id)->first();
+
+        return view('pages.produtos.update', compact('findProduto'));
     }
 }

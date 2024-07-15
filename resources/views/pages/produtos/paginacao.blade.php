@@ -9,7 +9,7 @@
         <form class="" action="{{ route('produto.index') }}" method="get">
             <input class="" type="text" name="pesquisar" placeholder="Digite o nome">
             <button class="btn btn-dark btn-sm">Pesquisar</button>
-            <a class="btn btn-success float-end" type="button">Gravar</a>
+            <a class="btn btn-success float-end" type="button" href="{{ route('produto.cadastrar') }}">Gravar</a>
         </form>
         <br/>
         <div class="table-responsive small">
@@ -30,7 +30,7 @@
                             <td>{{ $produto->nome }}</td>
                             <td>{{ 'R$'.' '.number_format($produto->valor, 2, ',', '.') }}</td>
                             <td>
-                                <a href="" 
+                                <a href="{{ route('produto.atualizar', $produto->id) }}" 
                                 class="btn btn-primary btn-sm">
                                     Editar
                                 </a>
