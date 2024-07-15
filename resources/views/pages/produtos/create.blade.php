@@ -21,7 +21,8 @@
                 <div class="invalid-feedback">{{ $errors->first('valor') }}</div>
             @endif
         </div>
-        <button type="submit" class="btn btn-success">Gravar</button>
+        <button type="submit" class="btn btn-success btn-sm">Gravar</button>
+        <a class="btn btn-outline-secondary btn-sm" type="button" href="{{ route('produto.index') }}">Cancelar</a>
     </form>
 
 @endsection

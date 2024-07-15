@@ -7,9 +7,16 @@
     </div>
     <div>
         <form class="" action="{{ route('produto.index') }}" method="get">
-            <input class="" type="text" name="pesquisar" placeholder="Digite o nome">
-            <button class="btn btn-dark btn-sm">Pesquisar</button>
-            <a class="btn btn-success float-end" type="button" href="{{ route('produto.cadastrar') }}">Gravar</a>
+            <div>
+                <div class="col-6">
+                    <div class="input-group mb-3">
+                        <input class="form-control" type="text" name="pesquisar" placeholder="Digite o nome">
+                        <button class="btn btn-secondary btn-sm">Pesquisar</button>
+                        
+                    </div>
+                </div>
+                <a class="btn btn-success float-end" type="button" href="{{ route('produto.cadastrar') }}">Registrar</a>
+            </div>
         </form>
         <br/>
         <div class="table-responsive small">
@@ -19,9 +26,9 @@
                 <table class="table table-striped table-sm">
                     <thead>
                         <tr>
-                        <th>Nome</th>
-                        <th>Valor</th>
-                        <th>Ações</th>
+                        <th class="col-6">Nome</th>
+                        <th class="col-4">Valor</th>
+                        <th class="col-2">Ações</th>
                         </tr>
                     </thead>
                     <tbody>
