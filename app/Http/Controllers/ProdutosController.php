@@ -6,6 +6,7 @@ use App\Models\Produto;
 use Illuminate\Http\Request;
 use App\Http\Requests\FormRequestProduto;
 use App\Models\Componentes;
+use Brian2694\Toastr\Facades\Toastr;
 
 class ProdutosController extends Controller
 {
@@ -41,6 +42,9 @@ class ProdutosController extends Controller
             $data['valor'] = $componentes->formatacaoMascaraDinheiroDecimal($data['valor']);
 
             Produto::create($data);
+
+            Toastr::success('Registro salvo com sucesso.', 'Parabéns!', ["positionClass" => "toast-top-center"]);
+
             return redirect()->route('produto.index');
         }
 
@@ -59,6 +63,8 @@ class ProdutosController extends Controller
 
             $buscaRegistro = Produto::find($id);
             $buscaRegistro->update($data);
+
+            Toastr::success('Registro alterado com sucesso.', 'Tudo certo!', ["positionClass" => "toast-top-center"]);
 
             return redirect()->route('produto.index');
         }
